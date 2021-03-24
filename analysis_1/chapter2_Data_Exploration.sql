@@ -1,3 +1,4 @@
+CREATE TABLE chapter2_data_exploration(
 --SELECT * FROM chapter1_teachers;
 
 --SELECT last_name, first_name, salary FROM chapter1_teachers;
@@ -43,7 +44,8 @@
 --WHERE school = 'F.D. Roosevelt HS'
       --AND (salary < 38000 OR salary > 40000);
 
-SELECT first_name, last_name, school, hire_date, salary
-FROM chapter1_teachers
-WHERE school LIKE '%Roos%'
-ORDER BY hire_date DESC;
+--SELECT first_name, last_name, school, hire_date, salary
+--FROM chapter1_teachers
+--WHERE school LIKE '%Roos%'
+--ORDER BY hire_date DESC;
+);
