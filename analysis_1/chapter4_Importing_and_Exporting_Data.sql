@@ -35,3 +35,7 @@
 
 --IMPORTING CENSUS DATA DESCRIBING COUNTIES
 --(Creating a new table)
+
+
+--IMPORTING A SUBSET OF COLUMNS
+--(Creating a new table)
