@@ -35,7 +35,7 @@ FROM (
      SELECT avg(p0010001) AS average,
             percentile_cont(.5)
                 WITHIN GROUP (ORDER BY p0010001)::numeric(10,1) AS median
-     FROM us_counties_2010
+     FROM chapter4_us_counties_2010
      )
 AS calcs;
 
@@ -50,7 +50,7 @@ FROM
     (
          SELECT st,
                 count(*) AS plant_count
-         FROM meat_poultry_egg_inspect
+         FROM chapter9_meat_poultry_egg_inspect
          GROUP BY st
     )
     AS plants
@@ -58,7 +58,7 @@ JOIN
     (
         SELECT state_us_abbreviation,
                sum(p0010001) AS st_population
-        FROM us_counties_2010
+        FROM chapter4_us_counties_2010
         GROUP BY state_us_abbreviation
     )
     AS census
@@ -71,8 +71,8 @@ SELECT geo_name,
        state_us_abbreviation AS st,
        p0010001 AS total_pop,
        (SELECT percentile_cont(.5) WITHIN GROUP (ORDER BY p0010001)
-        FROM us_counties_2010) AS us_median
-FROM us_counties_2010;
+        FROM chapter4_us_counties_2010) AS us_median
+FROM chapter4_us_counties_2010;
 
 -- Listing 12-6: Using a subquery expression in a calculation
 
@@ -80,12 +80,12 @@ SELECT geo_name,
        state_us_abbreviation AS st,
        p0010001 AS total_pop,
        (SELECT percentile_cont(.5) WITHIN GROUP (ORDER BY p0010001)
-        FROM us_counties_2010) AS us_median,
+        FROM chapter4_us_counties_2010) AS us_median,
        p0010001 - (SELECT percentile_cont(.5) WITHIN GROUP (ORDER BY p0010001)
-                   FROM us_counties_2010) AS diff_from_median
-FROM us_counties_2010
+                   FROM chapter4_us_counties_2010) AS diff_from_median
+FROM chapter4_us_counties_2010
 WHERE (p0010001 - (SELECT percentile_cont(.5) WITHIN GROUP (ORDER BY p0010001)
-                   FROM us_counties_2010))
+                   FROM chapter4_us_counties_2010))
        BETWEEN -1000 AND 1000;
 
             
@@ -139,7 +139,7 @@ WITH
 AS
     (
         SELECT geo_name, state_us_abbreviation, p0010001
-        FROM us_counties_2010
+        FROM chapter4_us_counties_2010
         WHERE p0010001 >= 100000
     )
 SELECT st, count(*)
@@ -149,7 +149,7 @@ ORDER BY count(*) DESC;
 
 -- Bonus: You can also write this query as:
 SELECT state_us_abbreviation, count(*)
-FROM us_counties_2010
+FROM chapter4_us_counties_2010
 WHERE p0010001 >= 100000
 GROUP BY state_us_abbreviation
 ORDER BY count(*) DESC;
@@ -159,12 +159,12 @@ ORDER BY count(*) DESC;
 WITH
     counties (st, population) AS
     (SELECT state_us_abbreviation, sum(population_count_100_percent)
-     FROM us_counties_2010
+     FROM chapter4_us_counties_2010
      GROUP BY state_us_abbreviation),
 
     plants (st, plants) AS
     (SELECT st, count(*) AS plants
-     FROM meat_poultry_egg_inspect
+     FROM chapter9_meat_poultry_egg_inspect
      GROUP BY st)
 
 SELECT counties.st,
@@ -180,14 +180,14 @@ ORDER BY per_million DESC;
 WITH us_median AS 
     (SELECT percentile_cont(.5) 
      WITHIN GROUP (ORDER BY p0010001) AS us_median_pop
-     FROM us_counties_2010)
+     FROM chapter4_us_counties_2010)
 
 SELECT geo_name,
        state_us_abbreviation AS st,
        p0010001 AS total_pop,
        us_median_pop,
        p0010001 - us_median_pop AS diff_from_median 
-FROM us_counties_2010 CROSS JOIN us_median
+FROM chapter4_us_counties_2010 CROSS JOIN us_median
 WHERE (p0010001 - us_median_pop)
        BETWEEN -1000 AND 1000;
 
