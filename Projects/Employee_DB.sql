@@ -5,3 +5,6 @@ CREATE TABLE Project1_EmployeeDB(
 	salary_figure numeric,
 	overtime_hours numeric
 );
+
+INSERT INTO Project1_EmployeeDB(department_name, job_title,salary_figure,overtime_hours)
+	
