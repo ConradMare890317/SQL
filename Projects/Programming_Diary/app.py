@@ -14,7 +14,7 @@ user_input = input(menu)
 while (user_input :=input(menu)) != "3":
     if user_input == "1":
         add_entry()
-    elif user_input == view_entries:
+    elif user_input == "2":
         view_entries()
     else:
         print("Invalid option, Please try again.")
