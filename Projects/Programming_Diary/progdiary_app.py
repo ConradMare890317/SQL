@@ -1,7 +1,7 @@
 from progdiary_database import add_entry, get_entries
 
 menu = """Please select one of the following options:
-1. Add new entry for today.
+1. Add a new entry for today.
 2. View entries.
 3. Exit.
 
