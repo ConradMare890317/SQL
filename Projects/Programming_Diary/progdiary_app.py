@@ -1,4 +1,4 @@
-from database import add_entry, view_entries
+from progdiary_database import add_entry, view_entries
 
 menu = """Please select one of the following options:
 1. Add new entry for today.
@@ -14,7 +14,7 @@ user_input = input(menu)
 while (user_input :=input(menu)) != "3":
     if user_input == "1":
         add_entry()
-    elif user_input == view_entries:
+    elif user_input == "2":
         view_entries()
     else:
         print("Invalid option, Please try again.")
