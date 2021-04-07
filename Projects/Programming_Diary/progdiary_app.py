@@ -1,5 +1,11 @@
 from progdiary_database import add_entry, get_entries
 
+
+
+
+def close_connection():
+connection.close()
+
 menu = """Please select one of the following options:
 1. Add a new entry for today.
 2. View entries.
