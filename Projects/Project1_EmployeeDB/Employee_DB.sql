@@ -27,3 +27,7 @@ VALUES
     ('Lee', 'Smith', 59300, 1),
     ('Soo', 'Nguyen', 83000, 2),
     ('Janet', 'King', 95000, 2);
+	
+SELECT emps_id,last_name, salary
+	FROM employees JOIN departments
+	ON employees.depts_id = departments.depts_id;
