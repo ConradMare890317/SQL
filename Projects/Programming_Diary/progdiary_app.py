@@ -1,30 +1,39 @@
-import database
+from progdiary_database import create_table, add_entry, get_entries
+
 
 menu = """Please select one of the following options:
-1) Add new movie.
-2) View upcoming movies.
-3) View all movies
-4) Watch a movie
-5) View watched movies.
-6) Exit.
+
+1) Add a new entry for today.
+2) View entries.
+3) Exit.
 
 Your selection: """
-welcome = "Welcome to the watchlist app!"
+
+welcome = "Welcome to the programming diary!"
+
+
+def prompt_new_entry():
+    entry_content = input("What have you learned today?")
+    entry_date = input("Enter date: ")
+
+    add_entry(entry_content, entry_date)
+
+
+def view_entries(entries):
+    for entry in entries:
+        print(f"{entry['date']}\n{entry['content']}\n\n")
 
 
 print(welcome)
-database.create_tables()
+create_table()
 
-while (user_input := input(menu)) != "6":
+user_input = input(menu)
+while (user_input := input(menu)) != "3":
     if user_input == "1":
-        pass
+        prompt_new_entry()
+
     elif user_input == "2":
-        pass
-    elif user_input == "3":
-        pass
-    elif user_input == "4":
-        pass
-    elif user_input == "5":
-        pass
+        view_entries(get_entries())
+
     else:
-        print("Invalid input, please try again!")
+        print("Invalid option, Please try again...")
