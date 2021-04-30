@@ -11,15 +11,18 @@ Your selection: """
 
 welcome = "Welcome to the programming diary!"
 
+
 def prompt_new_entry():
     entry_content = input("What have you learned today?")
-        entry_date = input("Enter date: ")
+    entry_date = input("Enter date: ")
 
-        add_entry(entry_content, entry_date)
+    add_entry(entry_content, entry_date)
+
 
 def view_entries(entries):
     for entry in entries:
-            print(f"{entry['date']}\n{entry['content']}\n\n")
+        print(f"{entry['date']}\n{entry['content']}\n\n")
+
 
 print(welcome)
 
