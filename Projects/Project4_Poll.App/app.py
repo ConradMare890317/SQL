@@ -16,6 +16,7 @@ MENU_PROMPT = """-- Menu --
 6) Exit
 
 Enter your choice: """
+
 NEW_OPTION_PROMPT = "Enter new option text (or leave empty to stop adding options): "
 
 
@@ -24,7 +25,7 @@ def prompt_create_poll(connection):
     poll_owner = input("Enter poll owner: ")
     options = []
 
-    while (new_option := input(NEW_OPTION_PROMPT)):
+    while new_option := input(NEW_OPTION_PROMPT):
         options.append(new_option)
 
     database.create_poll(connection, poll_title, poll_owner, options)
