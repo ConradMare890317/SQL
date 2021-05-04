@@ -21,3 +21,4 @@ def get_connection():
         yield connection
     finally:
         pool.putconn(connection)
+

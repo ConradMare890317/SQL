@@ -7,6 +7,7 @@ from connection_pool import get_connection
 from models.option import Option
 from models.poll import Poll
 
+
 MENU_PROMPT = """-- Menu --
 
 1) Create new poll
@@ -64,7 +65,7 @@ def show_poll_votes():
             print(f"{option.text} for {votes} ({percentage:.2f}% of total)")
     except ZeroDivisionError:
         print("No votes yet cast for this poll.")
-
+    
     vote_log = input("Would you like to see the vote log? (y/N) ")
 
     if vote_log == "y":
