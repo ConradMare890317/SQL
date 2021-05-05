@@ -7,19 +7,22 @@ poll_women = [poll[2] for poll in polls]
 
 poll_x_coordinates = range(len(polls))
 
-figure = plt.figure(figsize=(6, 6))
-figure.subplots_adjust(bottom=0.35)
+figure = plt.figure(figsize=(6, 6), linewidth=5)
+figure.subplots_adjust(bottom=0.5)
 axes = figure.add_subplot()
-axes.bar(
+
+men_plot = axes.bar(
     poll_x_coordinates,
     poll_men
 )
-axes.bar(
+women_plot = axes.bar(
     poll_x_coordinates,
     poll_women,
     bottom=poll_men
 )
 
+axes.legend((men_plot, women_plot), ("Men", "Women"))
+
 plt.xticks(poll_x_coordinates, poll_titles, rotation=30, ha="right")
 
-plt.show()
+figure.savefig("graph6.png", bbox_inches="tight", edgecolor="#6d49fb")
