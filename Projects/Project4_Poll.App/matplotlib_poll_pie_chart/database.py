@@ -28,4 +28,4 @@ def get_options(poll_id: int):
     with connection:
         with connection.cursor() as cursor:
             cursor.execute(SELECT_OPTIONS_IN_POLL, (poll_id,))
-            return  cursor.fetchall()
+            return cursor.fetchall()

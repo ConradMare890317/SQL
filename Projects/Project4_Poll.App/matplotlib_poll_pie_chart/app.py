@@ -6,6 +6,7 @@ import database
 MENU_PROMPT = "Enter 'q' to QUIT, or anything else to create a new poll."
 POLL_PROMPT = "Select the poll id to create a pie chart of the vote percentages."
 
+
 def prompt_select_poll(polls):
     for poll in polls:
         print(f"{poll[0]}: {poll[1]}")
