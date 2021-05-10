@@ -77,7 +77,7 @@ def _print_votes_for_options(options: List[Option]):
         for vote in option.votes:
             naive_datetime = datetime.datetime.utcfromtimestamp(vote[2])
             utc_date = pytz.utc.localize(naive_datetime)
-            local_date = utc_date.astimezone(pytz.timezone("Europe/London")).strftime("%Y-%m-%d %H:%M")
+            local_date = utc_date.astimezone(pytz.timezone("Africa/Johannesburg")).strftime("%Y-%m-%d %H:%M")
             print(f"\t- {vote[0]} on {local_date}")
 
 
